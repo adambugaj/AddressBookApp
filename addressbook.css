@@ -6,3 +6,7 @@
 #newContact:hover {
     cursor: pointer;
 }
+
+#dataSection, #buttonSave {
+    display: none;
+}
