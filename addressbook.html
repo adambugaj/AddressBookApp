@@ -8,8 +8,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         
     </head>
-    <body>
-    <div class="container">
+    <body onload="fetchAddress()";>
+    <div class="container" id="container">
        <h2>AddressBook App</h2>
         
         <hr class="my-4">
@@ -21,16 +21,16 @@
             
             <!-- Firstname Input -->
             
-            <div class="input-group">
+            <div class="input-group" id="firstName">
                 <span class="input-group-addon" id="basic-addon1">1</span>
-                <input type="text" class="form-control" placeholder="Type a first name" aria-label="Name" id="firstName">
+                <input type="text" class="form-control" placeholder="Type a first name" aria-label="Name" id="inputFirstName">
             </div>
             
             <!-- LastName Input -->
             
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon2">2</span>
-                <input type="text" class="form-control" placeholder="Type a last name" aria-label="Lastname" id="lastName">
+                <input type="text" class="form-control" placeholder="Type a last name" aria-label="Lastname" id="inputLastName">
             </div>
             
             <!-- PhoneNumber Input -->
@@ -49,8 +49,10 @@
             </div>
         
         <!-- Button save provided contact -->
-        <button onclick="saveContact()" type="button" class="btn btn-info" id="buttonSave">Save</button>
-        
+        <button type="submit" class="btn btn-info" id="buttonSave">Save</button>
+        <hr>
+        <div class="well" id="getResult">
+        </div>
         <p id="output"></p>
     </div>
 

@@ -1,35 +1,99 @@
-$(document).ready(function() {
-   $('#newContact').on('click', function() {
-       $('#dataSection').slideToggle();
-       $('#buttonSave').delay(400).fadeToggle();
-   });
-});
-
-
-var contacts = [];
-
-//function printPerson(person) {
-//    console.log(person.firstName);
+$('#dataSection').show();
+$('#buttonSave').show();
+//$(document).ready(function() {
+//   $('#newContact').on('click', function() {
+//       $('#dataSection').slideToggle();
+//       $('#buttonSave').delay(400).fadeToggle();
+//   });
+//});
+//
+//
+//var contacts = [];
+//
+////function printPerson(person) {
+////    console.log(person.firstName);
+////};
+//
+//var firstName = document.getElementById("firstName").value;
+//var lastName = document.getElementById("lastName").value;
+//
+//function addFirstName(firstName, lastName, phoneNumber, email) {
+//    this.firstName = firstName;
+//    this.lastName = lastName;
+//    this.phoneNumber = phoneNumber;
+//    this.email = email;
+//};
+//
+//function saveContact() {
+//    var getFirstName = document.getElementById("firstName").value;
+//    var getLastName = document.getElementById("lastName").value;
+//    var getPhoneNumber = document.getElementById("phoneNumber").value;
+//    var getEmail = document.getElementById("email").value;
+//    
+//    
+//    contacts[contacts.length] = new addFirstName(getFirstName, getLastName, getPhoneNumber, getEmail);
+//    document.getElementById("output").innerHTML = contacts[0].firstName + " " + contacts[0].lastName + " " + contacts[0].phoneNumber + " " + contacts[0].email;
 //};
 
-var firstName = document.getElementById("firstName").value;
-var lastName = document.getElementById("lastName").value;
+document.write('sa')
 
-function addFirstName(firstName, lastName, phoneNumber, email) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.phoneNumber = phoneNumber;
-    this.email = email;
-};
 
-function saveContact() {
-    var getFirstName = document.getElementById("firstName").value;
-    var getLastName = document.getElementById("lastName").value;
-    var getPhoneNumber = document.getElementById("phoneNumber").value;
-    var getEmail = document.getElementById("email").value;
+
+document.getElementById('buttonSave').addEventListener("click", function(e){
+    var firstName = document.getElementById("inputFirstName").value;
+    var lastName = document.getElementById('inputLastName').value;
     
-    contacts[contacts.length] = new addFirstName(getFirstName, getLastName, getPhoneNumber, getEmail);
-    document.getElementById("output").innerHTML = contacts[0].firstName + " " + contacts[0].lastName + " " + contacts[0].phoneNumber + " " + contacts[0].email;
-};
+    
+    var idStore = {
+        firstName: firstName,
+        lastName: lastName
+    }
+    
+    if(localStorage.getItem('idStorage') === null) {
+        var idStorage = [];
+        idStorage.push(idStore);
+        
+        localStorage.setItem('idStorage', JSON.stringify(idStorage));
+        
+    } else {
+        var idStorage = JSON.parse(localStorage.getItem('idStorage'));
+        idStorage.push(idStore);
+        localStorage.setItem('idStorage', JSON.stringify(idStorage));
+    }
+    
+    /* localstorage test
+    localStorage.setItem('test','My browser wants to fuck');
+    console.log(localStorage.getItem('test'));
+    localStorage.removeItem('test');
+    */
+    e.preventDefault();
+});
+
+//fetch address and show
+function fetchAddress(){
+    var idStorage = JSON.parse(localStorage.getItem('idStorage'));
+    var getResult = document.getElementById('getResult'); 
+    
+    for(var i = 0; i < idStorage.length; i++) {
+        var showFirstName = idStorage[i].firstName;
+        var showLastName = idStorage[i].lastName;
+        
+        getResult.innerHTML += '<div class="alert alert-success">'+
+                                '<h3>'+showFirstName+'</h3>' + 'n' + " " +
+                                '<h5>'+showLastName+'</h5>'+'</div>';
+            
+            
+            showFirstName + " " + showLastName;
+        console.log(idStorage[i].lastName);
+    }
+}
+
+
+
+
+
+
+
+
 
 
