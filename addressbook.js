@@ -42,11 +42,13 @@ document.write('sa')
 document.getElementById('buttonSave').addEventListener("click", function(e){
     var firstName = document.getElementById("inputFirstName").value;
     var lastName = document.getElementById('inputLastName').value;
+    var email = document.getElementById('inputEmail').value;
     
     
     var idStore = {
         firstName: firstName,
-        lastName: lastName
+        lastName: lastName,
+        email: email
     }
     
     if(localStorage.getItem('idStorage') === null) {
@@ -77,10 +79,12 @@ function fetchAddress(){
     for(var i = 0; i < idStorage.length; i++) {
         var showFirstName = idStorage[i].firstName;
         var showLastName = idStorage[i].lastName;
+        var showEmail = idStorage[i].email;
         
         getResult.innerHTML += '<div class="alert alert-success">'+
-                                '<h3>'+showFirstName+'</h3>' + 'n' + " " +
-                                '<h5>'+showLastName+'</h5>'+'</div>';
+                                '<h3>'+showFirstName+'</h3>' + " " +
+                                '<h5>'+showLastName+'</h5>'+
+                                '<a class="btn btn-default" target="_blank" href="'+showEmail+'">'+showEmail+'</a>'+'</div>';
             
             
             showFirstName + " " + showLastName;
