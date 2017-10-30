@@ -35,7 +35,7 @@ $('#buttonSave').show();
 //    document.getElementById("output").innerHTML = contacts[0].firstName + " " + contacts[0].lastName + " " + contacts[0].phoneNumber + " " + contacts[0].email;
 //};
 
-document.write('sa')
+
 
 
 
@@ -73,6 +73,12 @@ document.getElementById('buttonSave').addEventListener("click", function(e){
     e.preventDefault();
 });
 
+function deleteBookmark(showEmail) {
+    console.log(showEmail);
+}
+
+
+
 //fetch address and show
 function fetchAddress(){
     var idStorage = JSON.parse(localStorage.getItem('idStorage'));
@@ -88,7 +94,8 @@ function fetchAddress(){
                                 '<h3>'+showFirstName+'</h3>' + " " +
                                 '<h5>'+showLastName+'</h5>'+
                                 '<a class="btn btn-warning" target="_blank" href="'+showNumberPhone+'"> Call </a>' + " " + showNumberPhone + '</br>' + 
-                                '<a class="btn btn-success" target="_blank" href="'+showEmail+'">Visit</a>'+ " " + showEmail + '</div>';
+                                '<a class="btn btn-success" target="_blank" href="'+showEmail+'">Visit</a>'+ " " + showEmail + '</br>' +
+                                '<a onclick="deleteBookmark(\''+showEmail+'\')" class="btn btn-danger" href="#"> Delete </a>' + '</div>'
             
             
             showFirstName + " " + showLastName;
